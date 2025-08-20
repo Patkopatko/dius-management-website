@@ -1,11 +1,153 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-      <title>DIUS Management AI</title>
-  </head>
-  <body>
-      <h1>🚀 Ahoj Patrik!</h1>
-      <p>Vitaj na svojej webstránke diusmanagement.ai</p>
-      <p>Stránka funguje! 🎉</p>
-  </body>
-  </html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIUS Management AI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .greeting {
+            font-size: 2em;
+            margin: 30px 0;
+            color: #ffeb3b;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .team-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .team-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        .robot-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .status {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            margin: 20px 0;
+        }
+        .photo-placeholder {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px dashed rgba(255,255,255,0.3);
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .greeting { font-size: 1.5em; }
+            .hero { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🤖 DIUS Management AI</h1>
+            <div class="greeting">Ahoj Patrik!</div>
+            <p style="font-size: 1.3em;">Vitaj na svojej novej webstránke</p>
+            
+            <div class="status">
+                <strong>🎉 Stránka je LIVE a funkčná!</strong><br>
+                Doména: <strong>diusmanagement.ai</strong> ✅
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>🚀 Náš Tím & Technológie</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px;">
+                Špičkový tím odborníkov na AI a robotiku
+            </p>
+            
+            <div class="photo-placeholder">
+                <div class="robot-emoji">🤖👥</div>
+                <p><strong>Tímová fotka s humanoidným robotom</strong></p>
+                <p style="font-size: 0.9em; opacity: 0.8;">
+                    Úžasná fotka vášho tímu s pokročilým humanoidným robotom!<br>
+                    Fotka sa práve uploaduje na server... 🔄
+                </p>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="robot-emoji">🧠</div>
+                <h3>AI Management</h3>
+                <p>Pokročilé riešenia umelej inteligencie pre váš biznis</p>
+            </div>
+            
+            <div class="feature">
+                <div class="robot-emoji">🤖</div>
+                <h3>Robotika</h3>
+                <p>Humanoidné roboty a automatizácia procesov</p>
+            </div>
+            
+            <div class="feature">
+                <div class="robot-emoji">⚡</div>
+                <h3>Inovácie</h3>
+                <p>Najnovšie technológie a trend-setting riešenia</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; font-size: 0.9em; opacity: 0.7;">
+            <p>Aktualizované: práve teraz</p>
+            <p>Powered by GitHub Pages & Claude AI 🚀</p>
+        </div>
+    </div>
+</body>
+</html>
