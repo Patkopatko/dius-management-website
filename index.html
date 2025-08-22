@@ -151,8 +151,34 @@
         </div>
     </div>
 
-    <!-- DIUS AI Chatbot - GPT-5 Integration -->
-    <div id="dius-chat-widget">
+    <!-- DIUS AI Chatbot & Task Manager Integration -->
+    <div id="dius-widgets">
+        <!-- Task Manager Button -->
+        <button id="dius-tasks-button" style="
+            position: fixed;
+            bottom: 20px;
+            right: 110px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            z-index: 1000;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="openTaskManager()">
+            📋<br><span style="font-size: 10px;">Tasks</span>
+        </button>
+
         <!-- Chat Button -->
         <button id="dius-chat-button" style="
             position: fixed;
@@ -394,10 +420,35 @@
             }
         }
 
+        // Task Manager Integration
+        function openTaskManager() {
+            // For local development/testing
+            const localUrl = 'http://localhost:3000';
+            
+            // Try to open Task Manager in a new window
+            const taskWindow = window.open(
+                localUrl, 
+                'DiusTaskManager', 
+                'width=1200,height=800,scrollbars=yes,resizable=yes,menubar=no,toolbar=no,location=no,status=no'
+            );
+            
+            // If popup is blocked, show notification
+            if (!taskWindow) {
+                alert('📋 Task Manager\n\nPovolte vyskakovacie okná pre diusmanagement.ai\nalebo otvorte manuálne: ' + localUrl);
+            } else {
+                // Focus the new window
+                taskWindow.focus();
+            }
+        }
+
         // Mobile responsiveness
         if (window.innerWidth <= 480) {
             document.getElementById('dius-chat-window').style.width = 'calc(100vw - 40px)';
             document.getElementById('dius-chat-window').style.height = 'calc(100vh - 120px)';
+            
+            // On mobile, stack buttons vertically
+            document.getElementById('dius-tasks-button').style.bottom = '110px';
+            document.getElementById('dius-tasks-button').style.right = '20px';
         }
     </script>
 
