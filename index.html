@@ -292,7 +292,7 @@
 
     <script>
         // DIUS AI Chatbot - GPT-5 Integration
-        const CHAT_API_URL = 'https://dius-chatbot-api.onrender.com/chat'; // Temporary demo endpoint
+        const CHAT_API_URL = 'https://dius-chatbot-backend.onrender.com/chat'; // Live GPT-5 endpoint!
         let chatOpen = false;
 
         // Toggle chat window
@@ -342,35 +342,36 @@
             messages.scrollTop = messages.scrollHeight;
 
             try {
-                // For demo - simulate AI response
-                await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-                
+                // Call real GPT-5 API
+                const response = await fetch(CHAT_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
                 typing.style.display = 'none';
 
-                // Demo responses
-                const demoResponses = [
-                    "Ďakujem za vašu otázku! DIUS Management AI je špecializovaná na pokročilé AI riešenia a robotiku. Ako vám môžem ďalej pomôcť?",
-                    "Naše humanoidné roboty Unitree sú schopné vykonávať komplexné úlohy. Máte záujem o konkrétnu aplikáciu?",
-                    "AI technológie môžu výrazne zlepšiť efektivitu vášho podnikania. Chcete vedieť viac o našich riešeniach?",
-                    "Som tu, aby som vám pomohol s otázkami o AI, robotike a našich službách. Čím sa môžem zaoberať?",
-                    "DIUS Management ponúka cutting-edge riešenia v oblasti umelej inteligencie. O čom konkrétne by ste sa chceli dozvedieť?"
-                ];
-
-                const response = demoResponses[Math.floor(Math.random() * demoResponses.length)];
-
-                // Add AI response
-                const aiMsg = document.createElement('div');
-                aiMsg.style.cssText = `
-                    padding: 12px 16px;
-                    background: #e3f2fd;
-                    border-radius: 18px;
-                    max-width: 80%;
-                    align-self: flex-start;
-                    border-left: 4px solid #2196f3;
-                    color: #333;
-                `;
-                aiMsg.textContent = response;
-                messages.appendChild(aiMsg);
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Add AI response
+                    const aiMsg = document.createElement('div');
+                    aiMsg.style.cssText = `
+                        padding: 12px 16px;
+                        background: #e3f2fd;
+                        border-radius: 18px;
+                        max-width: 80%;
+                        align-self: flex-start;
+                        border-left: 4px solid #2196f3;
+                        color: #333;
+                    `;
+                    aiMsg.textContent = data.response || 'Prepáčte, nerozumiem.';
+                    messages.appendChild(aiMsg);
+                } else {
+                    throw new Error('Server error');
+                }
 
             } catch (error) {
                 typing.style.display = 'none';
