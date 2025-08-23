@@ -423,18 +423,18 @@
         // Task Manager Integration
         function openTaskManager() {
             // For local development/testing
-            const localUrl = 'http://localhost:3000';
+            const taskManagerUrl = 'https://dius-task-manager-cj3djir7w-archweber-6075s-projects.vercel.app';
             
             // Try to open Task Manager in a new window
             const taskWindow = window.open(
-                localUrl, 
+                taskManagerUrl, 
                 'DiusTaskManager', 
                 'width=1200,height=800,scrollbars=yes,resizable=yes,menubar=no,toolbar=no,location=no,status=no'
             );
             
             // If popup is blocked, show notification
             if (!taskWindow) {
-                alert('📋 Task Manager\n\nPovolte vyskakovacie okná pre diusmanagement.ai\nalebo otvorte manuálne: ' + localUrl);
+                alert('📋 Task Manager\n\nPovolte vyskakovacie okná pre diusmanagement.ai\nalebo otvorte manuálne: ' + taskManagerUrl);
             } else {
                 // Focus the new window
                 taskWindow.focus();
