@@ -179,6 +179,32 @@
             📋<br><span style="font-size: 10px;">Tasks</span>
         </button>
 
+        <!-- File Browser Button -->
+        <button id="dius-files-button" style="
+            position: fixed;
+            bottom: 20px;
+            right: 200px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+            z-index: 1000;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="openFilesBrowser()">
+            📁<br><span style="font-size: 10px;">Files</span>
+        </button>
+
         <!-- Chat Button -->
         <button id="dius-chat-button" style="
             position: fixed;
@@ -314,6 +340,7 @@
                 ">➤</button>
             </div>
         </div>
+
     </div>
 
     <script>
@@ -441,12 +468,32 @@
             }
         }
 
+        // Files Browser Integration - Simple redirect to standalone app
+        function openFilesBrowser() {
+            // Open Files Browser in new window
+            const filesWindow = window.open(
+                'https://patkopatko.github.io/dius-files-browser/', 
+                'DiusFilesBrowser', 
+                'width=1200,height=800,scrollbars=yes,resizable=yes,menubar=no,toolbar=no,location=no,status=no'
+            );
+            
+            // If popup is blocked, show notification
+            if (!filesWindow) {
+                alert('📁 Files Browser\n\nPovolte vyskakovacie okná pre diusmanagement.ai\nalebo otvorte manuálne: https://patkopatko.github.io/dius-files-browser/');
+            } else {
+                // Focus the new window
+                filesWindow.focus();
+            }
+        }
+
         // Mobile responsiveness
         if (window.innerWidth <= 480) {
             document.getElementById('dius-chat-window').style.width = 'calc(100vw - 40px)';
             document.getElementById('dius-chat-window').style.height = 'calc(100vh - 120px)';
             
             // On mobile, stack buttons vertically
+            document.getElementById('dius-files-button').style.bottom = '200px';
+            document.getElementById('dius-files-button').style.right = '20px';
             document.getElementById('dius-tasks-button').style.bottom = '110px';
             document.getElementById('dius-tasks-button').style.right = '20px';
         }
